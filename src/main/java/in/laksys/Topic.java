@@ -17,18 +17,18 @@ public class Topic {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
+	private Integer id;
 	
 	@Column(length = 100)
-	String name;
+	private String name;
 	
 	@Column(length = 500)
-	String description;
+	private String description;
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="topic_id")
-	List<Question> questions = new ArrayList<>();
+	private List<Question> questions = new ArrayList<>();
 	
 	
 	public Integer getId() {
