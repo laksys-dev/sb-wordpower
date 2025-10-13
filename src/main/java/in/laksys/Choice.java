@@ -1,10 +1,13 @@
 package in.laksys;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Choice {
@@ -15,6 +18,16 @@ public class Choice {
 	String name;
 	char label;
 
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="question_id")
+	Question question;
+	
+	public Question getQuestion() {
+		return question;
+	}
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
 	public Integer getId() {
 		return id;
 	}

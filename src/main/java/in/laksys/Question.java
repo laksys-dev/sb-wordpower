@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -26,6 +27,10 @@ public class Question {
 	String ans;
 	
 	char key;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "topic_id")
+	Topic topic;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="question_id")
@@ -62,6 +67,12 @@ public class Question {
 	}
 	public void setChoices(List<Choice> choices) {
 		this.choices = choices;
+	}
+	public Topic getTopic() {
+		return topic;
+	}
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
 	
 	
