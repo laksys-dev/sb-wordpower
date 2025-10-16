@@ -36,10 +36,13 @@ public class TopicController {
 	}
 	@PostMapping
 	public String addTopic(@RequestBody Topic topic) {
+		
 		topic.getQuestions().forEach((question) -> {			
 			question.setTopic(topic);
 			question.getChoices().forEach(c -> c.setQuestion(question));
 		});
+		
+		repo.save(topic);
 		
 		return "Topic added successfully!";
 	}

@@ -27,7 +27,7 @@ public class Topic {
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name="topic_id")
+	@JoinColumn(name="topic_id")	
 	private List<Question> questions = new ArrayList<>();
 	
 	

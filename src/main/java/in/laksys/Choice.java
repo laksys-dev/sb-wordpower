@@ -1,5 +1,7 @@
 package in.laksys;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,6 +22,7 @@ public class Choice {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="question_id")
+	@JsonIgnore
 	Question question;
 	
 	public Question getQuestion() {

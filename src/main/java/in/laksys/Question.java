@@ -3,6 +3,8 @@ package in.laksys;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,10 +32,11 @@ public class Question {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "topic_id")
+	@JsonIgnore
 	Topic topic;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name="question_id")
+	@JoinColumn(name="question_id")	
 	List<Choice> choices = new ArrayList<>();
 	
 	public char getKey() {
